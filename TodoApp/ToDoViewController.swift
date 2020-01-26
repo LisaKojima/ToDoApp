@@ -9,12 +9,26 @@
 import UIKit
 
 class ToDoViewController: UIViewController {
-
+    
+    //storyBoardで扱うTableViewを宣言
+    @IBOutlet var table : UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //タイトルをセット
+        self.navigationController?.title = "TODO"
+        self.navigationController?.navigationBar.barTintColor = .black
 
-        // Do any additional setup after loading the view.
     }
+    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
     
 
     /*
@@ -28,3 +42,4 @@ class ToDoViewController: UIViewController {
     */
 
 }
+
