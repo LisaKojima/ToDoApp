@@ -9,39 +9,47 @@
 import UIKit
 
 class AddToDoViewController: UIViewController {
+  
+    
     
     @IBOutlet var textField: UITextField!
     @IBOutlet var textView: UITextView!
+    var number: Int!
     
     let ud = UserDefaults()
     
-    var toDoArray: [String] = []
+    var toDoArrayTitle: [String] = []
+    var toDoArrayContent: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        //cellから飛んできた時に、保存されているものを表示するよ。
+        if number == nil {
+            
+        }else{
+            textField.text = toDoArrayTitle[number]
+            textView.text = toDoArrayContent[number]
+        }
 
         // Do any additional setup after loading the view.
     }
     
     @IBAction func save() {
-        toDoArray.append(textField.text!)
-        toDoArray.append(textView.text!)
-        ud.set(toDoArray, forKey: "todo")
+        toDoArrayTitle.append(textField.text!)
+        toDoArrayContent.append(textView.text!)
+        
+        ud.set(toDoArrayTitle, forKey: "todoTitle")
+        ud.set(toDoArrayContent, forKey: "toDoContent")
         dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func back() {
         self .dismiss(animated: true, completion: nil)
     }
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
