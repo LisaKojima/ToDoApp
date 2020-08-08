@@ -10,10 +10,8 @@ import UIKit
 
 class AddToDoViewController: UIViewController {
   
-    
-    
     @IBOutlet var textField: UITextField!
-    @IBOutlet var textView: UITextView!
+    
     var number: Int!
     
     let ud = UserDefaults()
@@ -29,20 +27,16 @@ class AddToDoViewController: UIViewController {
             
         }else{
             textField.text = toDoArrayTitle[number]
-            textView.text = toDoArrayContent[number]
+            
         }
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func save() {
         toDoArrayTitle.append(textField.text!)
-        toDoArrayContent.append(textView.text!)
-        
-        ud.set(toDoArrayTitle, forKey: "todoTitle")
-        ud.set(toDoArrayContent, forKey: "toDoContent")
+        textField.text = ""
+        UserDefaults.standard.set(toDoArrayTitle, forKey: "todoTitle")
+        UserDefaults.standard.set(toDoArrayContent, forKey: "toDoContent")
         dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func back() {
